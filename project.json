@@ -1,0 +1,8 @@
+{
+  "name": "fetches-optimizer",
+  "description": "Optimize fetch results for more efficient aggregations",
+  "memory": 512,
+  "timeout": 60,
+  "role": "arn:aws:iam::470049585876:role/fetches-optimizer_lambda_function",
+  "environment": {}
+}

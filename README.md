@@ -1,4 +1,4 @@
-# fetches-optimizer
+# fetches-optimizer 
 
 This is a simple piece of code intended to be run as a Lambda function when new data is inserted into `s3://openaq-fetches/realtime`. Currently, it's purpose is to gzip new objects and save them to `s3://openaq-fetches/realtime-gzipped`. This will make aggregations (via Athena) quicker and less expensive.
 

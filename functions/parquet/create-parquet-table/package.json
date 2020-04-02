@@ -1,0 +1,17 @@
+{
+  "name": "create-parquet-table",
+  "version": "1.0.0",
+  "description": "hello world sample for NodeJS",
+  "author": "Sruti Modekurty",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "scripts": {
+    "test": "mocha tests/unit/"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}

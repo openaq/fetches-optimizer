@@ -17,6 +17,12 @@ Resources:
       CodeUri: create-parquet-table/
       Handler: index.handler
       Runtime: nodejs12.x
+      Environment:
+        Variables:
+          DATABASE: 
+          FETCHES_TABLE: 
+          PARQUET_TABLE:
+          S3_BUCKET_LOCATION: 
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

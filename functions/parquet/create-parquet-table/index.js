@@ -26,7 +26,7 @@ exports.handler = async function (e, ctx, cb) {
 
     //TODO: Add trigger for weekly run
 
-    //TODO: Delete table and folder before re-creating it
+    const deleteQuery = `DROP TABLE ${parquetTable};`
 
     const ctasQuery =
         `CREATE TABLE ${parquetTable} 
@@ -35,8 +35,11 @@ exports.handler = async function (e, ctx, cb) {
         FROM ${fetchesTable};`
 
     try {
+        console.info(`Deleting ${parquetTable}`)
+        await athenaExpress.query(deleteQuery)
+
         console.info("Starting to run ctas query")
-        let results = await athenaExpress.query(ctasQuery);
+        let results = await athenaExpress.query(ctasQuery)
         return cb(null, results)
     }
     catch (error) {

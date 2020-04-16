@@ -24,8 +24,6 @@ exports.handler = async function (e, ctx, cb) {
     const fetchesTable = process.env.FETCHES_TABLE
     const parquetTable = process.env.PARQUET_TABLE
 
-    //TODO: Add trigger for weekly run
-
     const deleteQuery = `DROP TABLE ${parquetTable};`
 
     const ctasQuery =

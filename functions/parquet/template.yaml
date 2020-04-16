@@ -18,6 +18,11 @@ Resources:
       Handler: index.handler
       Runtime: nodejs12.x
       Timeout: 300 #5 minutes
+      Policies:
+        - AthenaQueryPolicy:
+            WorkGroupName: primary
+        - S3WritePolicy:
+            BucketName: #?
       Environment:
         Variables:
           DATABASE: 

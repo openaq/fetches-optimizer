@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  parquet
+
+  SAM Template for parquet functions
+  
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  InsertParquetTable:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: insert-parquet-table/
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Timeout: 60
+      Policies:
+        - AthenaQueryPolicy:
+            WorkGroupName: primary
+        - S3CrudPolicy:
+            BucketName: #?
+      Environment:
+        Variables:
+          DATABASE: 
+          PARQUET_TABLE:
+          S3_BUCKET:
+          S3_PARQUET_PREFIX:
+          TEMP_TABLE:
+          S3_TEMP_PREFIX:

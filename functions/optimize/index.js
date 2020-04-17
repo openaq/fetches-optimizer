@@ -12,6 +12,7 @@ exports.handle = function (e, ctx, cb) {
   let sourceBucket = e['sourceBucket'];
   const sourceKeySpace = e['sourceKeySpace'] || 'realtime';
   const destKeySpace = e['destKeySpace'] || 'realtime-gzipped';
+  const tempKeySpace = 'realtime-temp';
   if (sourceKey === undefined || sourceBucket === undefined) {
     const record = JSON.parse(e['Records'][0]['Sns']['Message'])['Records'][0];
     sourceBucket = record['s3']['bucket']['name'];
@@ -50,7 +51,22 @@ exports.handle = function (e, ctx, cb) {
           return cb(err);
         }
 
-        cb(null, { success: true });
+        // Write to same bucket but temp folder
+        const tempKey = `${sourceKey.replace(sourceKeySpace, tempKeySpace)}.gz`;
+        const writeTempParams = {
+          Bucket: sourceBucket,
+          Key: tempKey,
+          Body: buffer
+        };
+
+        console.info(`Writing object: ${sourceBucket}/${tempKey}`);
+        s3.putObject(writeTempParams, (err, data) => {
+          if (err) {
+            return cb(err);
+          }
+
+          cb(null, { success: true });
+        });
       });
     });
   });

@@ -17,6 +17,7 @@ Resources:
       CodeUri: insert-parquet-table/
       Handler: index.handler
       Runtime: nodejs12.x
+      Timeout: 10
       Policies:
         - AthenaQueryPolicy:
             WorkGroupName: primary
@@ -27,4 +28,4 @@ Resources:
           DATABASE: 
           PARQUET_TABLE:
           S3_BUCKET_LOCATION: 
-          TEMP_KEYSPACE:
+          TEMP_TABLE:

@@ -21,16 +21,21 @@ console.info('Starting insert parquet table function');
 exports.handler = async function (e, ctx, cb) {
 
     const parquetTable = process.env.PARQUET_TABLE
-    const tempKeySpace = process.env.TEMP_KEYSPACE
+    const tempTable = process.env.TEMP_TABLE
 
     //TODO: Get list of files in temp location in bucket
 
-    //TODO: Run INSERT_INTO query
+    const insertIntoQuery =
+        `INSERT INTO ${parquetTable} 
+        SELECT date.utc AS date_utc, date.local AS date_local, location, country, value, unit, city, attribution, averagingperiod, coordinates, sourcename, sourcetype, mobile, parameter
+        FROM ${tempTable};`
 
     //TODO: Delete files from temp location in bucket
 
     try {
-        return cb(null, {})
+        console.info("Starting to run insert_into query")
+        let results = await athenaExpress.query(insertIntoQuery)
+        return cb(null, results)
     }
     catch (error) {
         return cb(error)

@@ -1,0 +1,12 @@
+{
+    "name": "insert-parquet-table",
+    "version": "1.0.0",
+    "description": "Function to insert realtime data into parquet table",
+    "author": "Sruti Modekurty",
+    "license": "MIT",
+    "dependencies": {
+        "athena-express": "^5.2.0",
+        "aws-sdk": "^2.652.0",
+        "axios": "^0.18.0"
+    }
+}

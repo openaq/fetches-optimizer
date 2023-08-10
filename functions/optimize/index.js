@@ -6,7 +6,7 @@ const s3 = new AWS.S3();
 
 console.info('Starting optimize function');
 
-exports.handle = function (e, ctx, cb) {
+exports.handler = function (e, ctx, cb) {
   // Determine input parameters from SNS event or CLI payload
   let sourceKey = e['sourceKey'];
   let sourceBucket = e['sourceBucket'];

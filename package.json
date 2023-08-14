@@ -1,0 +1,15 @@
+{
+  "name": "fetches-optimizer",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Optimize fetch results for more efficient aggregations",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "author": "OpenAQ",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-lambda": "^3.391.0",
+    "@aws-sdk/client-s3": "^3.391.0"
+  }
+}
